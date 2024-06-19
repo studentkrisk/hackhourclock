@@ -42,6 +42,7 @@ wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 wlan.connect(ssid, password)
 while wlan.isconnected() == False:
+    LED.to_write = list(map(lambda x : x ^ 0x40, LED.to_write))
     utime.sleep(0.25)
 print("connected to wifi!")
 
